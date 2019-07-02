@@ -24,19 +24,24 @@ class SongContainer extends Component {
 
   handleSongSelected(index){
     const selectedSong = this.state.songs[index]
-    selectedSong['position'] = parseInt(index) + 1;
+    const songPosition = parseInt(index) + 1;
+    selectedSong['position'] = songPosition;
     this.setState({currentSong: selectedSong})
   }
 
   render(){
     return (
       <div className="song-container">
-        <h2>Song Selector</h2>
-        <SongSelector
-        songs={this.state.songs}
-        onSongSelected={this.handleSongSelected}
-        />
-        <SongDetail song={this.state.currentSong}/>
+        <div className='heading-and-selector'>
+          <h1>iTunes Top 20 Song Selector</h1>
+          <SongSelector
+          songs={this.state.songs}
+          onSongSelected={this.handleSongSelected}
+          />
+        </div>
+        <div>
+          <SongDetail song={this.state.currentSong}/>
+        </div>
       </div>
     )
   }
