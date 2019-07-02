@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SongSelector from '../components/SongSelector';
-//import
+import SongDetail from '../components/SongDetail'
 
 class SongContainer extends Component {
 
@@ -13,8 +13,6 @@ class SongContainer extends Component {
 
     this.handleSongSelected = this.handleSongSelected.bind(this);
   }
-
-
 
   componentDidMount(){
     const url = 'https://itunes.apple.com/gb/rss/topsongs/limit=20/json'
@@ -32,12 +30,13 @@ class SongContainer extends Component {
 
   render(){
     return (
-      <div>
+      <div className="song-container">
         <h2>Song Selector</h2>
         <SongSelector
         songs={this.state.songs}
         onSongSelected={this.handleSongSelected}
         />
+        <SongDetail song={this.state.currentSong}/>
       </div>
     )
   }
